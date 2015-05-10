@@ -46,7 +46,7 @@ public class New_post extends HttpServlet {
             int noOfPosts = Post_store.getlastid()-1;
             for(int i=noOfPosts;i>0 ;i--){
                 String postTitle = Post_store.getposttitle(i);
-                out.println("<h2>"+postTitle+"   <a href=\"\\BlogProject\\show_post?id="+i+"\">Show</a>   <a href=\"\\BlogProject\\New_post\\Edit_post?id="+i+"\">Edit</h2></a>");
+                out.println("<h2>"+postTitle+"   <a href=\"\\BlogProject\\show_post?id="+i+"\">Show</a>   <a href=\"\\BlogProject\\User\\Edit_post?id="+i+"\">Edit</h2></a>");
             }
             
             out.println("</body>");

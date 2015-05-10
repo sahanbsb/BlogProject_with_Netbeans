@@ -7,6 +7,7 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ import model.Post_store;
  *
  * @author Sahan
  */
-public class Add_post extends HttpServlet {
+public class Update_post extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,19 +35,23 @@ public class Add_post extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            int id = Integer.parseInt(request.getParameter("id"));
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Adding post</title>");  
-            out.println("<meta http-equiv=\"refresh\" content=\"1; url=\\BlogProject\\index.html\" />");
+            out.println("<title>Saving changes</title>"); 
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=\\BlogProject\\show_post?id="+id+"\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("Your post is being added to the blog...<br>");
+            out.println("Saving your changes...");
             
             String title = request.getParameter("title");
             String content = request.getParameter("content");
+            List<String> comments = Post_store.getpostcomments(id);
             
-            Post_store.add_post(title, content);
+            Post_store.update_post(title, content, comments, id);
+            
+            
             out.println("</body>");
             out.println("</html>");
         }

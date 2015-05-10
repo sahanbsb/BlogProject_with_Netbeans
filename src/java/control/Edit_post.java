@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Post_store;
 
 /**
  *
@@ -34,13 +35,29 @@ public class Edit_post extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+            String title = Post_store.getposttitle(id);
+            String content = Post_store.getpostcontent(id);
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Edit_post</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Edit_post at " + request.getContextPath() + "</h1>");
+            
+            out.println("<form action=\"\\BlogProject\\User\\Update_post\">");
+            out.println("Title:<br>");
+            out.println("<input type=\"text\" name=\"title\" value=\""+title+"\"><br>");
+            out.println("Content:<br>");
+            out.println("<textarea name=\"content\" rows=\"10\" cols=\"30\">"+content+"</textarea><br>");
+            out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
+        
+            out.println("<input type=\"submit\" value=\"Save Changes\">");
+            out.println("</form>");
+            
             out.println("</body>");
             out.println("</html>");
         }

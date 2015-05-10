@@ -20,6 +20,14 @@
         <servlet-name>Add_post</servlet-name>
         <servlet-class>control.Add_post</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Update_post</servlet-name>
+        <servlet-class>control.Update_post</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Add_comment</servlet-name>
+        <servlet-class>control.Add_comment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
         <url-pattern>/index.html</url-pattern>
@@ -30,7 +38,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Edit_post</servlet-name>
-        <url-pattern>/New_post/Edit_post</url-pattern>
+        <url-pattern>/User/Edit_post</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Show_post</servlet-name>
@@ -38,7 +46,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Add_post</servlet-name>
-        <url-pattern>/New_post/Add_post</url-pattern>
+        <url-pattern>/User/Add_post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Update_post</servlet-name>
+        <url-pattern>/User/Update_post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Add_comment</servlet-name>
+        <url-pattern>/Add_comment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
