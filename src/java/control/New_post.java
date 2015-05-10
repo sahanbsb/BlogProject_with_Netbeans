@@ -40,7 +40,7 @@ public class New_post extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            out.println("<a href=\"\\BlogProject\\New_post\\Add_post\"><h2>Add Post</h2></a>");
+            out.println("<a href=\"\\BlogProject\\User_html\\New_post_form.html\"><h2>Add Post</h2></a>");
             out.println("<h2>Select a post to edit</h2>");
             
             int noOfPosts = Post_store.getlastid()-1;

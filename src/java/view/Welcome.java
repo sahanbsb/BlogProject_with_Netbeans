@@ -48,7 +48,7 @@ public class Welcome extends HttpServlet {
                 out.println("<a href=\"\\BlogProject\\show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
             }
             
-            out.print("<a href=\"\\BlogProject\\New_post\\Add_post\">Add Post</a>");
+            out.print("<a href=\"\\BlogProject\\User_html\\New_post_form.html\">Add Post</a>");
             
 
             out.println("</body>");

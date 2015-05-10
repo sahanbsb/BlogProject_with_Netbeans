@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Post_store;
 
 /**
  *
@@ -32,13 +33,22 @@ public class Add_post extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Add_post</title>");            
+            out.println("<title>Adding post</title>");  
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=\\BlogProject\\index.html\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Add_post at " + request.getContextPath() + "</h1>");
+            out.println("Your post is being added to the blog...<br>");
+            
+            String title = request.getParameter("title");
+            String content = request.getParameter("content");
+            
+            Post_store.add_post(title, content);
+            
+            out.println("Your post is being added to the blog...<br>");
             out.println("</body>");
             out.println("</html>");
         }
