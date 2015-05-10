@@ -7,16 +7,18 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Post_store;
 
 /**
  *
  * @author Sahan
  */
-public class New_Post extends HttpServlet {
+public class Show_post extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,14 +34,26 @@ public class New_Post extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            int id = Integer.parseInt(request.getParameter("id"));
+            String title = Post_store.getposttitle(id);
+            String content = Post_store.getpostcontent(id);
+            List<String> comments = Post_store.getpostcomments(id);
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet New_Post</title>");            
+            out.println("<title>"+title+"</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet New_Post at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet New_Post </h1>");
+            out.println("<h1><u>"+title+"</u></h1>");
+            out.println("<p>"+content+"</p>");
+            out.println("<h2><u>Comments</u></h2>");
+            
+            for(String i : comments){
+                out.println("<h3>"+i+"</h3>");
+            }
+            
             out.println("</body>");
             out.println("</html>");
         }

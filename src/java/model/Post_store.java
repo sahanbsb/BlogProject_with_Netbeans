@@ -23,11 +23,14 @@ import org.json.simple.parser.ParseException;
  */
 public class Post_store {
     
+    public static final String root = "C:\\Users\\Sahan\\Documents\\NetBeansProjects\\Project1\\BlogProject";
+    
     public static void main(String [] args){
         add_post("test post 1", "this is the \n content of \n post 1.");
         show_post(1);
         addcomment("Hello my comment",1);
         show_post(1);
+        add_post("test post 2", "this is the \n content of \n post 2.");
         
     }
     
@@ -45,7 +48,7 @@ public class Post_store {
 
         obj.put("id", lastid);
         
-	try(FileWriter file = new FileWriter(".\\posts\\"+lastid+".json");) {
+	try(FileWriter file = new FileWriter(root+"\\posts\\"+lastid+".json");) {
             file.write(obj.toJSONString());
             file.flush();
             file.close();
@@ -67,21 +70,21 @@ public class Post_store {
         int lastid = 1;
         try {
  
-            Object idObj = parser.parse(new FileReader(".\\posts\\lastid.json"));
+            Object idObj = parser.parse(new FileReader(root+"\\posts\\lastid.json"));
 
             JSONObject jsonObject = (JSONObject) idObj;
 
             String slastid = jsonObject.get("lastid").toString();
             lastid = Integer.parseInt(slastid);
             
-            System.out.println(lastid);
+            //System.out.println(lastid);
  
 	} catch (FileNotFoundException e) {
             JSONObject newIdObj = new JSONObject();
-            lastid = 1;
+            lastid = 10;
             newIdObj.put("lastid", lastid);
             
-            try(FileWriter file = new FileWriter(".\\posts\\lastid.json");) {
+            try(FileWriter file = new FileWriter(root+"\\posts\\lastid.json");) {
             file.write(newIdObj.toJSONString());
             file.flush();
             file.close();
@@ -102,7 +105,7 @@ public class Post_store {
         
         JSONObject obj = new JSONObject();
         obj.put("lastid", lastid);
-        try(FileWriter file = new FileWriter(".\\posts\\lastid.json");) {
+        try(FileWriter file = new FileWriter(root+"\\posts\\lastid.json");) {
             file.write(obj.toJSONString());
             file.flush();
             file.close();
@@ -119,7 +122,7 @@ public class Post_store {
  
 	try {
  
-            Object obj = parser.parse(new FileReader(".\\posts\\"+id+".json"));
+            Object obj = parser.parse(new FileReader(root+"\\posts\\"+id+".json"));
 
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -145,7 +148,7 @@ public class Post_store {
  
 	try {
  
-            Object obj = parser.parse(new FileReader(".\\posts\\"+id+".json"));
+            Object obj = parser.parse(new FileReader(root+"\\posts\\"+id+".json"));
 
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -171,7 +174,7 @@ public class Post_store {
  
 	try {
  
-            Object obj = parser.parse(new FileReader(".\\posts\\"+id+".json"));
+            Object obj = parser.parse(new FileReader(root+"\\posts\\"+id+".json"));
 
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -216,7 +219,7 @@ public class Post_store {
         }
         obj.put("comments", comments);
         
-        try(FileWriter file = new FileWriter(".\\posts\\"+id+".json");) {
+        try(FileWriter file = new FileWriter(root+"\\posts\\"+id+".json");) {
             file.write(obj.toJSONString());
             file.flush();
             file.close();

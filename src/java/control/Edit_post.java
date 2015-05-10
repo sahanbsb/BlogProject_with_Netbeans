@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Post_store;
 
 /**
  *
  * @author Sahan
  */
-public class Welcome extends HttpServlet {
+@WebServlet(name = "Edit_post", urlPatterns = {"/New_post/Edit_post"})
+public class Edit_post extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,19 +37,10 @@ public class Welcome extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Blog Project</title>");            
+            out.println("<title>Servlet Edit_post</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Welcome To Project Blog !!!</h1>");
-            
-            int noOfPosts = Post_store.getlastid();
-            int limit = 10;
-            for(int i=noOfPosts;i>0 && limit>=0;i--,limit--){
-                String postTitle = Post_store.getposttitle(i);
-                out.println("<a href=\"\\BlogProject\\show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
-            }
-            
-            out.println("<a href=\"\\BlogProject\\new_post\"><h3>Add/Edit</h3></a>");
+            out.println("<h1>Servlet Edit_post at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

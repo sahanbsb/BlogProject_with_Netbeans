@@ -1,28 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>New_Post</servlet-name>
-        <servlet-class>control.New_Post</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Welcome</servlet-name>
         <servlet-class>view.Welcome</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>New_Post</servlet-name>
-        <url-pattern>/new_post</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>New_post</servlet-name>
+        <servlet-class>control.New_post</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Add_post</servlet-name>
+        <servlet-class>control.Add_post</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Edit_post</servlet-name>
+        <servlet-class>control.Edit_post</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Show_post</servlet-name>
+        <servlet-class>control.Show_post</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>New_post</servlet-name>
+        <url-pattern>/new_post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Add_post</servlet-name>
+        <url-pattern>/New_post/Add_post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Edit_post</servlet-name>
+        <url-pattern>/New_post/Edit_post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Show_post</servlet-name>
+        <url-pattern>/show_post</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
-    
     <!--
     <security-constraint>
         <web-resource-collection>
