@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +17,7 @@ import model.Post_store;
  *
  * @author Sahan
  */
-public class Welcome extends HttpServlet {
+public class New_post extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +36,19 @@ public class Welcome extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Blog Project</title>");
+            out.println("<title>Add/Edit Post</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Welcome To Project Blog !!!</h1>");
+            
+            out.println("<a href=\"\\BlogProject\\New_post\\Add_post\"><h2>Add Post</h2></a>");
+            out.println("<h2>Select a post to edit</h2>");
             
             int noOfPosts = Post_store.getlastid()-1;
-            int limit = 10;
-            for(int i=noOfPosts;i>0 && limit>=0;i--,limit--){
+            for(int i=noOfPosts;i>0 ;i--){
                 String postTitle = Post_store.getposttitle(i);
-                out.println("<a href=\"\\BlogProject\\show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
+                out.println("<h2>"+postTitle+"   <a href=\"\\BlogProject\\show_post?id="+i+"\">Show</a>   <a href=\"\\BlogProject\\New_post\\Edit_post?id="+i+"\">Edit</h2></a>");
             }
             
-            out.print("<a href=\"\\BlogProject\\New_post\\Add_post\">Add Post</a>");
-            
-
             out.println("</body>");
             out.println("</html>");
         }

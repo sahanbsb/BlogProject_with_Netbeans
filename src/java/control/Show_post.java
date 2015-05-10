@@ -51,9 +51,9 @@ public class Show_post extends HttpServlet {
             out.println("<h2><u>Comments</u></h2>");
             
             for(String i : comments){
-                out.println("<h3>"+i+"</h3>");
+                out.println(i);
             }
-            
+            out.println("<br><br><a href=\"\\BlogProject\\New_post\\Edit_post?id="+id+"\">Edit Post</a>");
             out.println("</body>");
             out.println("</html>");
         }
