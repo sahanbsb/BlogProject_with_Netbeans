@@ -50,7 +50,14 @@ public class Welcome extends HttpServlet {
             
             out.print("<a href=\"\\BlogProject\\User_html\\New_post_form.html\">Add Post</a>");
             
-
+            out.println("<br>");
+            
+            //out.println("<input type=button value=\"User Login\" onclick = \"document.location.href = '\\userpage'\"/>");
+            
+            out.println("<input type=button value=\"User Login\" onclick = \"parent.location='userpage'\"/>");
+            
+            out.println("<input type=button value=\"Admin Login\" onclick = \"parent.location='adminpage'\"/>");
+            
             out.println("</body>");
             out.println("</html>");
         }
