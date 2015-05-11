@@ -48,7 +48,7 @@ public class Edit_post extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            out.println("<form action=\"\\BlogProject\\User\\Update_post\">");
+            out.println("<form action=\"/BlogProject/User/Update_post\">");
             out.println("Title:<br>");
             out.println("<input type=\"text\" name=\"title\" value=\""+title+"\"><br>");
             out.println("Content:<br>");

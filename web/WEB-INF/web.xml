@@ -4,115 +4,100 @@
         <servlet-name>Welcome</servlet-name>
         <servlet-class>view.Welcome</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>New_post</servlet-name>
         <servlet-class>control.New_post</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>New_post</servlet-name>
+        <url-pattern>/new_post</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>Edit_post</servlet-name>
         <servlet-class>control.Edit_post</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Edit_post</servlet-name>
+        <url-pattern>/User/Edit_post</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>Show_post</servlet-name>
         <servlet-class>control.Show_post</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Show_post</servlet-name>
+        <url-pattern>/show_post</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>Add_post</servlet-name>
         <servlet-class>control.Add_post</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Add_post</servlet-name>
+        <url-pattern>/User/Add_post</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>Update_post</servlet-name>
         <servlet-class>control.Update_post</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Update_post</servlet-name>
+        <url-pattern>/User/Update_post</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>Add_comment</servlet-name>
         <servlet-class>control.Add_comment</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Welcome</servlet-name>
-        <url-pattern>/index.html</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>New_post</servlet-name>
-        <url-pattern>/new_post</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Edit_post</servlet-name>
-        <url-pattern>/User/Edit_post</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Show_post</servlet-name>
-        <url-pattern>/show_post</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Add_post</servlet-name>
-        <url-pattern>/User/Add_post</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Update_post</servlet-name>
-        <url-pattern>/User/Update_post</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Add_comment</servlet-name>
         <url-pattern>/Add_comment</url-pattern>
     </servlet-mapping>
+    
     
     <servlet>
         <servlet-name>AdminPage</servlet-name>
         <servlet-class>control.AdminLogin</servlet-class>
     </servlet>
     
-    
     <servlet-mapping>
         <servlet-name>AdminPage</servlet-name>
         <url-pattern>/adminpage</url-pattern>
     </servlet-mapping>
+    
     
     <servlet>
         <servlet-name>UserPage1</servlet-name>
         <servlet-class>control.UserLogin</servlet-class>
     </servlet>
     
-    
     <servlet-mapping>
         <servlet-name>UserPage1</servlet-name>
         <url-pattern>/userpage</url-pattern>
     </servlet-mapping>
     
-    
-    
-    <!--
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
-    
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>admin</web-resource-name>
-            <url-pattern>/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-        </auth-constraint>
-        <user-data-constraint>
-            
-            <transport-guarantee>NONE</transport-guarantee>
-	</user-data-constraint>
-    </security-constraint>
-    
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>user</web-resource-name>
-            <url-pattern>/</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    -->
     
     <security-constraint>
         <web-resource-collection>
@@ -121,6 +106,8 @@
             </web-resource-name>
             <url-pattern>/adminpage</url-pattern>
             <url-pattern>/userpage</url-pattern>
+            <url-pattern>/User/*</url-pattern>
+            <url-pattern>/User_html/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
@@ -138,6 +125,8 @@
                 SecuredBookSite
             </web-resource-name>
             <url-pattern>/userpage</url-pattern>
+            <url-pattern>/User/*</url-pattern>
+            <url-pattern>/User_html/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>

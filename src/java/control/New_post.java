@@ -40,13 +40,14 @@ public class New_post extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            out.println("<a href=\"\\BlogProject\\User_html\\New_post_form.html\"><h2>Add Post</h2></a>");
+            out.println("<a href=\"/BlogProject/User_html/New_post_form.html\"><h2>Add Post</h2></a>");
             out.println("<h2>Select a post to edit</h2>");
             
             int noOfPosts = Post_store.getlastid()-1;
             for(int i=noOfPosts;i>0 ;i--){
                 String postTitle = Post_store.getposttitle(i);
-                out.println("<h2>"+postTitle+"   <a href=\"\\BlogProject\\show_post?id="+i+"\">Show</a>   <a href=\"\\BlogProject\\User\\Edit_post?id="+i+"\">Edit</h2></a>");
+                out.println("<h2>"+postTitle+"   <a href=\"/BlogProject/show_post?id="+i+"\">Show</a>   <a href=\"/BlogProject/User/Edit_post?id="+i+"\">Edit</h2></a>");
+                //out.println("<h2>"+postTitle+"   <a href=\"\\BlogProject\\show_post?id="+i+"\">Show</a>   <a href=\"\\BlogProject\\User\\Edit_post?id="+i+"\">Edit</h2></a>");
             }
             
             out.println("</body>");

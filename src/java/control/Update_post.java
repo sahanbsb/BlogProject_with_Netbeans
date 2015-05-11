@@ -40,7 +40,7 @@ public class Update_post extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Saving changes</title>"); 
-            out.println("<meta http-equiv=\"refresh\" content=\"1; url=\\BlogProject\\show_post?id="+id+"\" />");
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/show_post?id="+id+"\" />");
             out.println("</head>");
             out.println("<body>");
             out.println("Saving your changes...");

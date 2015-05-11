@@ -54,15 +54,15 @@ public class Show_post extends HttpServlet {
                 out.println(i+"<br>");
             }
             
-            out.println("<br><form action=\"\\BlogProject\\Add_comment\">");
+            out.println("<br><form action=\"/BlogProject/Add_comment\">");
             out.println("Enter your comment:<br>");
             out.println("<input type=\"text\" name=\"comment\" value=\"\"><br>");
             out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
             out.println("<input type=\"submit\" value=\"Comment\">");
             out.println("</form>");
             
-            out.println("<br><br><a href=\"\\BlogProject\\User\\Edit_post?id="+id+"\">Edit Post</a>");
-            out.println("<br><br><a href=\"\\BlogProject\\index.html\">Home</a>");
+            out.println("<br><br><a href=\"/BlogProject/User/Edit_post?id="+id+"\">Edit Post</a>");
+            out.println("<br><br><a href=\"/BlogProject/index.html\">Home</a>");
             out.println("</body>");
             out.println("</html>");
         }

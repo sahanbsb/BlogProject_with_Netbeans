@@ -45,18 +45,18 @@ public class Welcome extends HttpServlet {
             int limit = 10;
             for(int i=noOfPosts;i>0 && limit>=0;i--,limit--){
                 String postTitle = Post_store.getposttitle(i);
-                out.println("<a href=\"\\BlogProject\\show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
+                out.println("<a href=\"/BlogProject/show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
             }
             
-            out.print("<a href=\"\\BlogProject\\User_html\\New_post_form.html\">Add Post</a>");
+            out.print("<a href=\"/BlogProject/User_html/New_post_form.html\">Add Post</a>");
             
             out.println("<br>");
             
             //out.println("<input type=button value=\"User Login\" onclick = \"document.location.href = '\\userpage'\"/>");
             
-            out.println("<input type=button value=\"User Login\" onclick = \"parent.location='userpage'\"/>");
+            out.println("<input type=button value=\"User Page\" onclick = \"parent.location='userpage'\"/>");
             
-            out.println("<input type=button value=\"Admin Login\" onclick = \"parent.location='adminpage'\"/>");
+            out.println("<input type=button value=\"Admin Page\" onclick = \"parent.location='adminpage'\"/>");
             
             out.println("</body>");
             out.println("</html>");
