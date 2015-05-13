@@ -39,6 +39,7 @@ public class Show_post extends HttpServlet {
             String title = Post_store.getposttitle(id);
             String content = Post_store.getpostcontent(id);
             List<String> comments = Post_store.getpostcomments(id);
+            List<String> UA_comments = Post_store.getpostUAcomments(id);
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -54,7 +55,14 @@ public class Show_post extends HttpServlet {
                 out.println(i+"<br>");
             }
             
-            out.println("<br><form action=\"/BlogProject/Add_comment\">");
+            out.println("<h2><u>Un Approved Comments</u></h2>");
+            
+            for(String i : UA_comments){
+                out.println(i+"   <a href=\"/BlogProject/User/Approve_comment?choice=1&id="+id+"&comment="+i+"\">Approve</a>");
+                out.println("   <a href=\"/BlogProject/User/Approve_comment?choice=0&id="+id+"&comment="+i+"\">Remove</a><br>");
+            }
+            
+            out.println("<br><form action=\"/BlogProject/User/Add_comment\">");
             out.println("Enter your comment:<br>");
             out.println("<input type=\"text\" name=\"comment\" value=\"\"><br>");
             out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
@@ -62,7 +70,7 @@ public class Show_post extends HttpServlet {
             out.println("</form>");
             
             out.println("<br><br><a href=\"/BlogProject/User/Edit_post?id="+id+"\">Edit Post</a>");
-            out.println("<br><br><a href=\"/BlogProject/index.html\">Home</a>");
+            out.println("<br><br><a href=\"/BlogProject/new_post\">Home</a>");
             out.println("</body>");
             out.println("</html>");
         }

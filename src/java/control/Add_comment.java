@@ -39,7 +39,7 @@ public class Add_comment extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Saving changes</title>"); 
-            out.println("<meta http-equiv=\"refresh\" content=\"1; url=\\BlogProject\\show_post?id="+id+"\" />");
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/User/show_post?id="+id+"\" />");
             out.println("</head>");
             out.println("<body>");
             out.println("Saving your changes...");
@@ -47,12 +47,13 @@ public class Add_comment extends HttpServlet {
             String title = Post_store.getposttitle(id);
             String content = Post_store.getpostcontent(id);
             List<String> comments = Post_store.getpostcomments(id);
+            List<String> UA_comments = Post_store.getpostUAcomments(id);
             
             String comment = request.getParameter("comment");
             
             if(!comment.equals("")) comments.add(comment);
             
-            Post_store.update_post(title, content, comments, id);
+            Post_store.update_post(title, content, comments, UA_comments, id);
             
             
             out.println("</body>");

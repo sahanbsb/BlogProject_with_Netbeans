@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletContext;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ import model.Post_store;
  *
  * @author Sahan
  */
-public class Welcome extends HttpServlet {
+public class Add_comment_guest extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,33 +34,29 @@ public class Welcome extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            ServletContext servletContext = request.getSession().getServletContext();
-            Post_store.root = servletContext.getRealPath("/");
-            Post_store.root = Post_store.root + "/";
+            int id = Integer.parseInt(request.getParameter("id"));
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Blog Project</title>");
+            out.println("<title>Saving changes</title>"); 
+            out.println("<meta http-equiv=\"refresh\" content=\"3; url=/BlogProject/show_post_guest?id="+id+"\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Welcome To Project Blog !!!</h1>");
+            out.println("Saving your changes...<br>");
+            out.println("Your comment will be added after user approval.");
             
-            int noOfPosts = Post_store.getlastid()-1;
-            int limit = 10;
-            for(int i=noOfPosts;i>0 && limit>=0;i--,limit--){
-                String postTitle = Post_store.getposttitle(i);
-                out.println("<a href=\"/BlogProject/show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
-            }
+            String title = Post_store.getposttitle(id);
+            String content = Post_store.getpostcontent(id);
+            List<String> comments = Post_store.getpostcomments(id);
+            List<String> UA_comments = Post_store.getpostUAcomments(id);
             
-            out.println("<br>");
+            String comment = request.getParameter("comment");
             
-            //out.println("<input type=button value=\"User Login\" onclick = \"document.location.href = '\\userpage'\"/>");
+            if(!comment.equals("")) UA_comments.add(comment);
             
-            out.println("<input type=button value=\"User Page\" onclick = \"parent.location='userpage'\"/>");
+            Post_store.update_post(title, content, comments, UA_comments, id);
             
-            //out.println("<input type=button value=\"Admin Page\" onclick = \"parent.location='adminpage'\"/>");
             
             out.println("</body>");
             out.println("</html>");

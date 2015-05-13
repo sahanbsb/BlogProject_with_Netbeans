@@ -4,101 +4,98 @@
         <servlet-name>Welcome</servlet-name>
         <servlet-class>view.Welcome</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>Show_post_guest</servlet-name>
+        <servlet-class>control.Show_post_guest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
-        <url-pattern>/index.html</url-pattern>
+        <url-pattern>/User/index.html</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>New_post</servlet-name>
         <servlet-class>control.New_post</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>Welcome_guest</servlet-name>
+        <servlet-class>view.Welcome_guest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Add_comment_guest</servlet-name>
+        <servlet-class>control.Add_comment_guest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>New_post</servlet-name>
         <url-pattern>/new_post</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>Edit_post</servlet-name>
         <servlet-class>control.Edit_post</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>Edit_post</servlet-name>
         <url-pattern>/User/Edit_post</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>Show_post</servlet-name>
         <servlet-class>control.Show_post</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>Show_post</servlet-name>
-        <url-pattern>/show_post</url-pattern>
+        <url-pattern>/User/show_post</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>Add_post</servlet-name>
         <servlet-class>control.Add_post</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>Add_post</servlet-name>
         <url-pattern>/User/Add_post</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>Update_post</servlet-name>
         <servlet-class>control.Update_post</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>Update_post</servlet-name>
         <url-pattern>/User/Update_post</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>Add_comment</servlet-name>
         <servlet-class>control.Add_comment</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>Add_comment</servlet-name>
-        <url-pattern>/Add_comment</url-pattern>
+        <url-pattern>/User/Add_comment</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>AdminPage</servlet-name>
         <servlet-class>control.AdminLogin</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>AdminPage</servlet-name>
         <url-pattern>/adminpage</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>UserPage1</servlet-name>
         <servlet-class>control.UserLogin</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>UserPage1</servlet-name>
         <url-pattern>/userpage</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet-mapping>
+        <servlet-name>Show_post_guest</servlet-name>
+        <url-pattern>/show_post_guest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Welcome_guest</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Add_comment_guest</servlet-name>
+        <url-pattern>/Add_comment_guest</url-pattern>
+    </servlet-mapping>
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>
@@ -108,6 +105,7 @@
             <url-pattern>/userpage</url-pattern>
             <url-pattern>/User/*</url-pattern>
             <url-pattern>/User_html/*</url-pattern>
+            <url-pattern>/new_post</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
@@ -118,7 +116,6 @@
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>
@@ -127,6 +124,7 @@
             <url-pattern>/userpage</url-pattern>
             <url-pattern>/User/*</url-pattern>
             <url-pattern>/User_html/*</url-pattern>
+            <url-pattern>/new_post</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
@@ -138,7 +136,6 @@
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
@@ -146,14 +143,10 @@
             <form-error-page>/login-failed.html</form-error-page>
         </form-login-config>
     </login-config>
-    
     <security-role>
         <role-name>role1</role-name>
     </security-role>
     <security-role>
         <role-name>tomcat</role-name>
     </security-role>
-    
 </web-app>
-    
-

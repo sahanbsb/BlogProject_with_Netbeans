@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletContext;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,8 @@ import model.Post_store;
  *
  * @author Sahan
  */
-public class Welcome extends HttpServlet {
+@WebServlet(name = "Approve_comment", urlPatterns = {"/User/Approve_comment"})
+public class Approve_comment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,33 +37,33 @@ public class Welcome extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            ServletContext servletContext = request.getSession().getServletContext();
-            Post_store.root = servletContext.getRealPath("/");
-            Post_store.root = Post_store.root + "/";
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+            String title = Post_store.getposttitle(id);
+            String content = Post_store.getpostcontent(id);
+            List<String> comments = Post_store.getpostcomments(id);
+            List<String> UA_comments = Post_store.getpostUAcomments(id);
+            
+            String comment = request.getParameter("comment");
+            int choice = Integer.parseInt(request.getParameter("choice"));
+            
+            if(choice==1){
+                UA_comments.remove(comment);
+                comments.add(comment);
+            }else{
+                UA_comments.remove(comment);
+            }
+            
+            Post_store.update_post(title, content, comments, UA_comments, id);
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Blog Project</title>");
+            out.println("<title>Approve comment</title>");
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/User/show_post?id="+id+"\" />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Welcome To Project Blog !!!</h1>");
-            
-            int noOfPosts = Post_store.getlastid()-1;
-            int limit = 10;
-            for(int i=noOfPosts;i>0 && limit>=0;i--,limit--){
-                String postTitle = Post_store.getposttitle(i);
-                out.println("<a href=\"/BlogProject/show_post?id="+i+"\"><h2>"+postTitle+"</h2></a>");
-            }
-            
-            out.println("<br>");
-            
-            //out.println("<input type=button value=\"User Login\" onclick = \"document.location.href = '\\userpage'\"/>");
-            
-            out.println("<input type=button value=\"User Page\" onclick = \"parent.location='userpage'\"/>");
-            
-            //out.println("<input type=button value=\"Admin Page\" onclick = \"parent.location='adminpage'\"/>");
-            
+            out.println("<h1>Proccessing your choice...</h1>");
             out.println("</body>");
             out.println("</html>");
         }

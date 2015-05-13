@@ -40,7 +40,7 @@ public class Update_post extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Saving changes</title>"); 
-            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/show_post?id="+id+"\" />");
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/User/show_post?id="+id+"\" />");
             out.println("</head>");
             out.println("<body>");
             out.println("Saving your changes...");
@@ -48,8 +48,9 @@ public class Update_post extends HttpServlet {
             String title = request.getParameter("title");
             String content = request.getParameter("content");
             List<String> comments = Post_store.getpostcomments(id);
+            List<String> UA_comments = Post_store.getpostUAcomments(id);
             
-            Post_store.update_post(title, content, comments, id);
+            Post_store.update_post(title, content, comments, UA_comments, id);
             
             
             out.println("</body>");

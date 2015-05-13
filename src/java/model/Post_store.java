@@ -44,6 +44,10 @@ public class Post_store {
         
 	obj.put("comments", comments);
         
+        JSONArray UA_comments = new JSONArray();
+        
+        obj.put("UA_comments", UA_comments);
+        
         int lastid = getlastid();
 
         obj.put("id", lastid);
@@ -198,17 +202,60 @@ public class Post_store {
  
      }
     
+    public static List<String> getpostUAcomments(int id) {
+ 
+	JSONParser parser = new JSONParser();
+        List<String> UA_comments = new ArrayList<>();
+ 
+	try {
+ 
+            Object obj = parser.parse(new FileReader(root+"posts/"+id+".json"));
+
+            JSONObject jsonObject = (JSONObject) obj;
+
+            JSONArray JUAcomments = (JSONArray) jsonObject.get("UA_comments");
+            if(JUAcomments!=null){
+		Iterator<String> iterator = JUAcomments.iterator();
+		while (iterator.hasNext()) {
+                    UA_comments.add(iterator.next());
+		}
+            }
+ 
+	} catch (FileNotFoundException e) {
+            System.out.println(e);
+	} catch (IOException e) {
+            System.out.println(e);
+	} catch (ParseException e) {
+            System.out.println(e);
+	}
+        
+        return UA_comments;
+ 
+     }
+    
     public static void addcomment(String comment, int id){
         String title = getposttitle(id);
         String content = getpostcontent(id);
         List<String> comments = getpostcomments(id);
+        List<String> UA_comments = getpostUAcomments(id);
         
         comments.add(comment);
         
-        update_post(title, content, comments, id);
+        update_post(title, content, comments, UA_comments, id);
     }
     
-    public static void update_post(String title, String content, List<String> comments, int id){
+    public static void addUAcomment(String comment, int id){
+        String title = getposttitle(id);
+        String content = getpostcontent(id);
+        List<String> comments = getpostcomments(id);
+        List<String> UA_comments = getpostUAcomments(id);
+        
+        UA_comments.add(comment);
+        
+        update_post(title, content, comments, UA_comments, id);
+    }
+    
+    public static void update_post(String title, String content, List<String> comments, List<String> UA_comments, int id){
         JSONObject obj = new JSONObject();
 	obj.put("title", title);
 	obj.put("content", content);
@@ -218,6 +265,12 @@ public class Post_store {
             Jcomments.add(i);
         }
         obj.put("comments", comments);
+        
+        JSONArray JUA_comments = new JSONArray();
+        for(String i : UA_comments){
+            JUA_comments.add(i);
+        }
+        obj.put("UA_comments", UA_comments);
         
         try(FileWriter file = new FileWriter(root+"posts/"+id+".json");) {
             file.write(obj.toJSONString());
