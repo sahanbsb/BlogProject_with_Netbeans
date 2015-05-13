@@ -38,7 +38,7 @@ public class Add_post extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Adding post</title>");  
-            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/User/index.html\" />");
+            out.println("<meta http-equiv=\"refresh\" content=\"1; url=/BlogProject/new_post\" />");
             out.println("</head>");
             out.println("<body>");
             out.println("Your post is being added to the blog...<br>");
