@@ -7,6 +7,7 @@ package view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,10 @@ public class Welcome extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            ServletContext servletContext = request.getSession().getServletContext();
+            Post_store.root = servletContext.getRealPath("/");
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

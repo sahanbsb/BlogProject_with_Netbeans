@@ -50,7 +50,7 @@ public class Add_comment extends HttpServlet {
             
             String comment = request.getParameter("comment");
             
-            comments.add(comment);
+            if(!comment.equals("")) comments.add(comment);
             
             Post_store.update_post(title, content, comments, id);
             
